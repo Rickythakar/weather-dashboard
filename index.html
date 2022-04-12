@@ -5,27 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-<!-- create dom elements for js file -->
-<!-- jumbotron -->
-<div class="header"></div>
-<!-- weather card and search options -->
-<div class="side-column"></div>
-<!-- Detailed weather information -->
-<div class="main"></div>
-<div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </div>
-<!-- five day forecast -->
-<div class="section"></div>
-
+    <div class="parent">
+        <div class="header">
+            <h1>Weather Dashboard</h1> 
+        </div>
+        <div class="div2"> 
+            <h1>Card for searching weather</h1>
+        </div>
+        <div class="div3">
+            <h1>Weather Results</h1></div>
+        <div class="div4">
+            <h1>Five day forecast</h1> </div>
+        </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"
         integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
@@ -36,7 +31,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/timezone.min.js"
         integrity="sha512-pslqxxHAYPCxaSeFSmXXxDkLejD5dbFVC66aiVq0z4v7VTJBU+wqcG1OpNh4p3MjS2D6NCwz/H2QmSc7dXxryg=="
         crossorigin="anonymous"></script>
-        
+    <script src="./assets/key.js"></script>
     <script src="./assets/script.js">
     </script>
 </body>
