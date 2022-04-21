@@ -1,4 +1,4 @@
-.parent {
+/* .parent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -31,10 +31,10 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         border: solid 5px green;
     }
-    
+
     .div4 { 
         grid-area: 4 / 3 / 6 / 6; 
         text-align: center;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         border: solid 5px green;
-    }
+    } */

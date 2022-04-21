@@ -15,7 +15,6 @@ const apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&ap
             secretKey = key.apiKey;
             console.log(secretKey);
         });
-      
     
 console.log(apiUrl);
 
@@ -40,17 +39,79 @@ function displaySearchHistory() {
     return response.json()})
     console.log(apiUrl)
 }
-    
 
 // Function to display search history 
+function onGot(historyItems) {
+    for (item of historyItems) {
+      console.log(item.url);
+      console.log(new Date(item.lastVisitTime));
+    }
+  }
+  
+  // let searching = browser.history.search({text: ""});
+
+  
+  // searching.then(onGot);
 // Function to update history and local storage
 // Function to grab history from local storage
 // Function to display current weather data fetch from openweather api
 // Function to display a forecast card
+
+
+function renderForecastCard() {
+//this is for a one day card that appears in the todays weather container
+
+
+}
+
+
+
+
+function renderForecast() {
+  //time stamps for the start date of the forecast and end date of the forecast
+// create variables to target elements within the div
+let dailyWeather = document.createElement("div");
+let fiveDay = document.createElement("h4");
+
+//Set attr to five day variable and add text content from api
+dailyWeather.append(fiveDay)
+// goes inside the forecast container
+// create more divs for the days of the week
+//craete for loop to go thru the days of the week 
+//append data here
+}
+
+
+
+
 // Function to display five day forecast
 // Function to render city and data
 // Function to grab weather data location using geolocation
-// Function to fetch coordinates
+function getCoords(event) {
+  event.preventDefault();
+  let city = document.getElementById("cityName").value;
+  console.log("city Name = ", city);
+  fetch("http://api.openweathermap.org/geo/1.0/direct?q="+ city + "&limit=5&appid=" + apiKey)
+  .then(response => response.json())
+  .then(data=> console.log(data[0]))
+};
+
+//Function to display daily weather within the container
+function dailyWeather(event) {
+  event.preventDefault();
+  let daily = document.getElementById("js-daily").value;
+  let lat = 33.44;
+  let lon = -94.04;
+  let city = location.name;
+  console.log("today's weather = " + daily)
+  // console.log(daily)
+  fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=" + daily + "&appid=" + apiKey)
+  .then(response => response.json())
+  .then(data => console.log(city, data))
+  
+}
+
+
 // Function to handle search forms
 // Function to handle click history
 // Function to displaySearchHistory
@@ -58,16 +119,7 @@ function displaySearchHistory() {
 // Two add event listners for the search history and search submission
 //  searchDisplayBox.innerHTML = "";
 
-// create a fetch request for api key
-// function weatherData(weatherApiUrl) {
-//     fetch(weatherApiUrl)
-//     .then(function(response) {
-//         response.json()
-//     })
-//     .then(function(data)
-//     })
-// }
 
 // Make a request to the one call and show them how to make api key
 // fetch coordinates
-
+document.getElementById("searchBtn").addEventListener("click", getCoords)
