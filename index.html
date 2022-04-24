@@ -20,33 +20,34 @@
                 <p class="lead">This is weather dashboard</p>
             </div>
         </div>
-        <div class="div2">
-            <h1>Search for a City</h1>
-            <div class="input-group rounded mb-3">
-                <input id="cityName" type="search" class="form-control rounded" placeholder="City" aria-label="Search"
-                    aria-describedby="search-addon" />
-                <button id="searchBtn" type="button">
-                    Get Weather
-                </button>
-            </div>
-        </div>
-        <div class="div3">
-            <h1 id="js-daily">Weather Results</h1>
 
-
-            <div class="card">
-                <h5 class="card-header">Today's Weather</h5>
-                <div class="card-body">
-                    <h5 class="card-title dailyWeather" id="js-weather-description"></h5>
-                   <img src=" " alt="">
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="d-flex">
+            <div class="div2 col-md-4">
+                <h1>Search for a City</h1>
+                <div class="input-group rounded mb-3">
+                    <input id="cityName" type="search" class="form-control rounded" placeholder="City"
+                        aria-label="Search" aria-describedby="search-addon" />
+                    <button id="searchBtn" type="button">
+                        Get Weather
+                    </button>
                 </div>
             </div>
-
+                <!--  -->
+                <div class="div3 col-md-8">
+                    <h1 id="js-daily">Today's Weather</h1>
+                    <div class="card">
+                        <h5 class="card-header">Today's Weather</h5>
+                        <div class="card-body">
+                            <h5 class="card-title dailyWeather" id="js-weather-description"></h5>
+                            <img src="" id="today-icon" alt="weather icon">
+                        </div>
+                    </div>
+                </div>
+            
         </div>
-        <!-- <h1>Five day forecast</h1> -->
-        <div class="row">
-            <div class="cardDeck">
+        <h1>Five day forecast</h1>
+        <div class="row col-md-10">
+            <div class="cardDeck" id="js-five-day-container">
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                     <div class="card-header">Header</div>
                     <div class="card-body">
@@ -58,7 +59,8 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"
             integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
             crossorigin="anonymous"></script>

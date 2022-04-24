@@ -47,30 +47,44 @@ function onGot(historyItems) {
 }
 // let searching = browser.history.search({text: ""});
 
-
 // searching.then(onGot);
 // Function to update history and local storage
 // Function to grab history from local storage
-// Function to display current weather data fetch from openweather api
-// Function to display a forecast card
 
+
+
+//this is for a one day card that appears in the todays weather container
 function renderCurrentForecastCard(forecastData) {
   console.log(forecastData)
   $("#js-weather-description").text(forecastData.weather[0].description);
-  $("#today-icon").(forecastData.weather[0].temp);
-  // $("#js-weather-description").text(forecastData.weather[0].description);
-  //this is for a one day card that appears in the todays weather container
+  $("today-icon").preventDefault;
+  $("#today-icon").attr("src", "http://openweathermap.org/img/wn/" + forecastData.weather[0].icon +"@2x.png");
+  //temp
+  //wind
+  //humidity
+  // uv index
+
 }
 
-function renderForecast() {
-  //time stamps for the start date of the forecast and end date of the forecast
-  // create variables to target elements within the div
-  let dailyWeather = document.createElement("div");
-  let fiveDay = document.createElement("h4");
+function renderFiveDay(fiveDayData) {
+  let $fiveDayContainer = $("#js-five-day-container")
+  console.log("five day data", fiveDayData);
+  for (let i = 0; i < 5; i++) {
+    const currentDayData = fiveDayData[i];
+    console.log(currentDayData);
+    let $cardElement = $("<div>").addClass("card text-white bg-primary mb-3");
+    let $cardHeader = $("<div>").addClass("card-header").text("Header " + i);
+    let $cardText = $("<div>").addClass("card-text").text(currentDayData.temp.day);
+    //let $cardHeader = $("<div>").addClass("card-header").text();
+    //let $cardHeader = $("<div>").addClass("card-header").text();
+    $cardElement.append($cardHeader);
+    $cardElement.append($cardText);
+    $fiveDayContainer.append($cardElement);
+  }
+  // let dailyWeather = document.createElement("div");
+  // let fiveDay = document.createElement("h4");
 
   //Set attr to five day variable and add text content from api
-  dailyWeather.append(fiveDay)
-  // create more divs for the days of the week
   //craete for loop to go thru the days of the week 
 }
 
@@ -85,7 +99,6 @@ function getCoords(event) {
       console.log(data[0])
       let locationData = data[0]
       //console.log(locationData);
-      //using dot notation to refernce key/property within the object
       let lat = locationData.lat
       let lon = locationData.lon
       dailyWeather(lat, lon)
@@ -100,8 +113,9 @@ function dailyWeather(lat, lon) {
     .then(response => response.json())
     .then(data => {
       let currentForecastData = data.current;
-      let dailyForecastData = data.daily; 
+      let fiveDay = data.daily; 
       renderCurrentForecastCard(currentForecastData);
+      renderFiveDay(fiveDay);
       console.log(data)
 })  
 }
