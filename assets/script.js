@@ -73,8 +73,8 @@ function renderFiveDay(fiveDayData) {
     const currentDayData = fiveDayData[i];
     console.log(currentDayData);
     let $cardElement = $("<div>").addClass("card text-white bg-primary mb-3");
-    let $cardHeader = $("<div>").addClass("card-header").text("Header " + i);
-    let $cardText = $("<div>").addClass("card-text").text(currentDayData.temp.day);
+    let $cardHeader = $("<div>").addClass("card-header").text("Day " + i);
+    let $cardText = $("<div>").addClass("card-text").text("Tempterature" + currentDayData.temp.day);
     //let $cardHeader = $("<div>").addClass("card-header").text();
     //let $cardHeader = $("<div>").addClass("card-header").text();
     $cardElement.append($cardHeader);
