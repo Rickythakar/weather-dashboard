@@ -63,7 +63,6 @@ function renderCurrentForecastCard(forecastData) {
   //wind
   //humidity
   // uv index
-
 }
 
 function renderFiveDay(fiveDayData) {
