@@ -55,10 +55,17 @@ function onGot(historyItems) {
 
 //this is for a one day card that appears in the todays weather container
 function renderCurrentForecastCard(forecastData) {
-  console.log(forecastData)
+  console.log("This is the forecast data ", forecastData)
   $("#js-weather-description").text(forecastData.weather[0].description);
+  $("js-temp").text(forecastData.temp);
+
+
+
+  let $todayIcon = 
   $("today-icon").preventDefault;
   $("#today-icon").attr("src", "http://openweathermap.org/img/wn/" + forecastData.weather[0].icon +"@2x.png");
+  
+  // $(".card-body").text(forecastData.);
   //temp
   //wind
   //humidity
@@ -95,7 +102,7 @@ function getCoords(event) {
   fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + apiKey)
     .then(response => response.json())
     .then(data => {
-      console.log(data[0])
+      console.log("Location Data ", data[0])
       let locationData = data[0]
       //console.log(locationData);
       let lat = locationData.lat
