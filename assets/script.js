@@ -18,12 +18,8 @@ fetchKey().then((key) => {
 console.log(apiUrl);
 
 //Dom Element References 
-// #search form. #search-input, #today, #forecast, #history
 let searchForm = document.querySelector("#search-form");
-// let searchInput
-// let todayBox
-// let forecastBox
-// let searchDisplayBox
+
 
 // Add timezone for any 
 dayjs.extend(window.dayjs_plugin_utc);
@@ -46,52 +42,59 @@ function onGot(historyItems) {
   }
 }
 // let searching = browser.history.search({text: ""});
-
 // searching.then(onGot);
 // Function to update history and local storage
 // Function to grab history from local storage
 
 
-
 //this is for a one day card that appears in the todays weather container
 function renderCurrentForecastCard(forecastData) {
   console.log("This is the forecast data ", forecastData)
-  $("#js-weather-description").text(forecastData.weather[0].description);
-  $("js-temp").text(forecastData.temp);
-
-
-
-  let $todayIcon = 
-  $("today-icon").preventDefault;
-  $("#today-icon").attr("src", "http://openweathermap.org/img/wn/" + forecastData.weather[0].icon +"@2x.png");
-  
-  // $(".card-body").text(forecastData.);
-  //temp
-  //wind
-  //humidity
-  // uv index
+  $("#js-weather-description").text(forecastData.weather[0].wind_speed);
+  $("#js-temp").text("Temperature "+ forecastData.feels_like);
+  let $todayIcon = $("today-icon").preventDefault;
+  $("#today-icon").attr("src", "http://openweathermap.org/img/wn/" + forecastData.weather[0].icon + "@2x.png");
+  $("#js-humidity").text("Humidity "+ forecastData.humidity);
+  $("#js-wind-speed").text("Wind Speed: "+ forecastData.wind_speed);
+  $("#js-uv-index").text("UV Index of "+ forecastData.uvi);
 }
 
 function renderFiveDay(fiveDayData) {
   let $fiveDayContainer = $("#js-five-day-container")
-  console.log("five day data", fiveDayData);
+  let nowDayJs = dayjs()
+  // empty any existing html in the five day container
+  $fiveDayContainer.empty()
+  console.log("five day data", fiveDayData)
+
   for (let i = 0; i < 5; i++) {
+    let $cardHeader;
     const currentDayData = fiveDayData[i];
     console.log(currentDayData);
     let $cardElement = $("<div>").addClass("card text-white bg-primary mb-3");
-    let $cardHeader = $("<div>").addClass("card-header").text("Day " + i);
-    let $cardText = $("<div>").addClass("card-text").text("Tempterature" + currentDayData.temp.day);
-    //let $cardHeader = $("<div>").addClass("card-header").text();
+
+    // TODO: write if/else-if statement to check if index is 0 or 1 for "today/tomorrow"
+
+    // if () {
+    //   $cardHeader = $("<div>").addClass("card-header").text("Day " + i);
+    // } else if () {
+    //   $cardHeader = $("<div>").addClass("card-header").text("Day " + i);
+    // } else {
+    const weekday = nowDayJs.format('dddd')
+    $cardHeader = $("<div>").addClass("card-header").text(weekday);
+    // }
+    nowDayJs = nowDayJs.add(1, 'day')
+
+    let $cardTemp = $("<div>").addClass("card-body").text("Tempterature: " + currentDayData.temp.day);
+    let $cardWindSpeed = $("<div>").addClass("card-body").text("Wind Speed: " + currentDayData.temp.day);
+    let $cardHumidity = $("<div>").addClass("card-body").text("UV Index: " + currentDayData.temp.day);
     //let $cardHeader = $("<div>").addClass("card-header").text();
     $cardElement.append($cardHeader);
-    $cardElement.append($cardText);
+    $cardElement.append($cardTemp);
+    $cardElement.append($cardWindSpeed);
+    $cardElement.append($cardHumidity);
     $fiveDayContainer.append($cardElement);
   }
-  // let dailyWeather = document.createElement("div");
-  // let fiveDay = document.createElement("h4");
 
-  //Set attr to five day variable and add text content from api
-  //craete for loop to go thru the days of the week 
 }
 
 // Function to grab weather data location using geolocation
@@ -119,20 +122,13 @@ function dailyWeather(lat, lon) {
     .then(response => response.json())
     .then(data => {
       let currentForecastData = data.current;
-      let fiveDay = data.daily; 
+      let fiveDay = data.daily;
       renderCurrentForecastCard(currentForecastData);
       renderFiveDay(fiveDay);
       console.log(data)
-})  
+    })
 }
 
-// Function to handle search forms
-// Function to handle click history
-// Function to displaySearchHistory
-// Call back function to grab search history from local storage
-// Two add event listners for the search history and search submission
-//  searchDisplayBox.innerHTML = "";
 
-// Make a request to the one call and show them how to make api key
 // fetch coordinates
 document.getElementById("searchBtn").addEventListener("click", getCoords)
