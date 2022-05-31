@@ -1,7 +1,7 @@
 //Global Variables
 const searchHistory = [];
 const weatherApiUrl = "https://api.openweathermap.org/";
-const apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=88a754472e95b886547fd49c550f9fe6&units=imperial";
+const apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=88a754472e95b886547fd49c550f9fe6&units=imperial";
 
 // This calls the API, just update the url to have your key's name.
 async function fetchKey() {
