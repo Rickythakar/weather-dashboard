@@ -20,7 +20,6 @@ console.log(apiUrl);
 //Dom Element References 
 let searchForm = document.querySelector("#search-form");
 
-
 // Add timezone for any 
 dayjs.extend(window.dayjs_plugin_utc);
 dayjs.extend(window.dayjs_plugin_timezone);
@@ -58,7 +57,6 @@ function renderCurrentForecastCard(forecastData) {
   $("#js-wind-speed").text("Wind Speed: "+ forecastData.wind_speed);
   $("#js-uv-index").text("UV Index of "+ forecastData.uvi);
 }
-
 function renderFiveDay(fiveDayData) {
   let $fiveDayContainer = $("#js-five-day-container")
   let nowDayJs = dayjs()
@@ -73,7 +71,6 @@ function renderFiveDay(fiveDayData) {
     let $cardElement = $("<div>").addClass("card text-white bg-primary mb-3");
 
     // TODO: write if/else-if statement to check if index is 0 or 1 for "today/tomorrow"
-
     // if () {
     //   $cardHeader = $("<div>").addClass("card-header").text("Day " + i);
     // } else if () {
@@ -83,7 +80,6 @@ function renderFiveDay(fiveDayData) {
     $cardHeader = $("<div>").addClass("card-header").text(weekday);
     // }
     nowDayJs = nowDayJs.add(1, 'day')
-
     let $cardTemp = $("<div>").addClass("card-body").text("Tempterature: " + currentDayData.temp.day);
     let $cardWindSpeed = $("<div>").addClass("card-body").text("Wind Speed: " + currentDayData.temp.day);
     let $cardHumidity = $("<div>").addClass("card-body").text("UV Index: " + currentDayData.temp.day);
@@ -94,7 +90,6 @@ function renderFiveDay(fiveDayData) {
     $cardElement.append($cardHumidity);
     $fiveDayContainer.append($cardElement);
   }
-
 }
 
 // Function to grab weather data location using geolocation
@@ -116,8 +111,6 @@ function getCoords(event) {
 
 //Function to display daily weather within the container
 function dailyWeather(lat, lon) {
-  // let daily = document.getElementById("js-daily").value;
-  // let city = location.name;
   fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&appid=" + apiKey + "&units=imperial")
     .then(response => response.json())
     .then(data => {
@@ -128,7 +121,6 @@ function dailyWeather(lat, lon) {
       console.log(data)
     })
 }
-
 
 // fetch coordinates
 document.getElementById("searchBtn").addEventListener("click", getCoords)
