@@ -6,6 +6,8 @@
   Live Link of webpage can be found here
   https://rickythakar.github.io/weather-dashboard/
 
+[screenshot](./assets/weatherdashboard.png)
+
   ## Table of Contents
   * [Installation](#installation)
   * [Usage](#usage)
