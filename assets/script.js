@@ -52,7 +52,7 @@ function renderCurrentForecastCard(forecastData) {
   $("#js-weather-description").text(forecastData.weather[0].wind_speed);
   $("#js-temp").text("Temperature "+ forecastData.feels_like);
   let $todayIcon = $("today-icon").preventDefault;
-  $("#today-icon").attr("src", "http://openweathermap.org/img/wn/" + forecastData.weather[0].icon + "@2x.png");
+  $("#today-icon").attr("src", "https://openweathermap.org/img/wn/" + forecastData.weather[0].icon + "@2x.png");
   $("#js-humidity").text("Humidity "+ forecastData.humidity);
   $("#js-wind-speed").text("Wind Speed: "+ forecastData.wind_speed);
   $("#js-uv-index").text("UV Index of "+ forecastData.uvi);
@@ -97,7 +97,7 @@ function getCoords(event) {
   event.preventDefault();
   let city = document.getElementById("cityName").value;
   console.log("city Name = ", city);
-  fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + apiKey)
+  fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + apiKey)
     .then(response => response.json())
     .then(data => {
       console.log("Location Data ", data[0])
